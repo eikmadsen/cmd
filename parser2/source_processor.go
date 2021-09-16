@@ -112,7 +112,9 @@ func (s *SourceProcessor) addPackages() (err error) {
 	s.log.Info("Loaded modules ", "len results", len(s.packageList), "error", err)
 
 	// Now process the files in the aap source folder	s.revelContainer.ImportPath + "/...",
-	err = utils.Walk(path.Join(s.revelContainer.BasePath, "app"), s.processPath)
+	err = utils.Walk(path.Join(s.revelContainer.BasePath, "app/controllers"), s.processPath)
+	s.log.Info("Loaded apps and modules ", "len results", len(s.packageList), "error", err)
+	err = utils.Walk(path.Join(s.revelContainer.BasePath, "tests/controllers"), s.processPath)
 	s.log.Info("Loaded apps and modules ", "len results", len(s.packageList), "error", err)
 	return
 }
