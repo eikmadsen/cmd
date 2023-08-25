@@ -65,8 +65,7 @@ func MatchHandler(key string, value interface{}, h LogHandler) LogHandler {
 // context matches the value. For example, to only log records
 // from your ui package:
 //
-//    log.MatchFilterHandler("pkg", "app/ui", log.StdoutHandler)
-//
+//	log.MatchFilterHandler("pkg", "app/ui", log.StdoutHandler)
 func MatchFilterHandler(key string, value interface{}, h LogHandler) LogHandler {
 	return FilterHandler(func(r *Record) (pass bool) {
 		return r.Context[key] == value
