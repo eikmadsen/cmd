@@ -214,7 +214,7 @@ func (s *SourceInfoProcessor) getControllerFunc(funcDecl *ast.FuncDecl, p *packa
 			var importPath string
 			typeExpr := model.NewTypeExprFromAst(p.Name, field.Type)
 			if !typeExpr.Valid {
-				utils.Logger.Warn("Warn: Didn't understand argument '%s' of action %s. Ignoring.", name, s.getFuncName(funcDecl))
+				utils.Logger.Warnf("Warn: Didn't understand argument '%s' of action %s. Ignoring.", name, s.getFuncName(funcDecl))
 				return // We didn't understand one of the args.  Ignore this action.
 			}
 			// Local object
@@ -373,7 +373,7 @@ func (s *SourceInfoProcessor) getStructTypeDecl(decl ast.Decl, fset *token.FileS
 	}
 
 	if len(genDecl.Specs) == 0 {
-		utils.Logger.Warn("Warn: Surprising: %s:%d Decl contains no specifications", fset.Position(decl.Pos()).Filename, fset.Position(decl.Pos()).Line)
+		utils.Logger.Warnf("Warn: Surprising: %s:%d Decl contains no specifications", fset.Position(decl.Pos()).Filename, fset.Position(decl.Pos()).Line)
 		return
 	}
 
